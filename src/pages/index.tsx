@@ -2,7 +2,7 @@ import { Box, Flex, Heading } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { intervalToDuration } from 'date-fns';
 
-const endDate = new Date(Date.parse('27 May 2022 09:10:32 GMT'));
+const endDate = new Date(Date.parse('26 May 2022 19:00:00'));
 
 const getIntervalToDuration = () =>
   intervalToDuration({
