@@ -16,7 +16,7 @@ const getIntervalToDuration = () =>
   });
 
 const pad = (n: number | undefined): string => {
-  if (!n) return '';
+  if (n === undefined || n === null) return '';
 
   return n < 10 ? `0${n}` : n.toString();
 };
