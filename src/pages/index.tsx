@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { intervalToDuration } from 'date-fns';
 
 import photo from 'public/photo.jpeg';
+import photo2 from 'public/photo2.jpeg';
+import photo3 from 'public/photo3.jpeg';
 
 const endDate = new Date(Date.parse('26 May 2022 19:00:00'));
 
@@ -44,7 +46,11 @@ export default function Home(): JSX.Element {
   }, []);
 
   const onClick = () => {
-    setClickCount(clickCount + 1);
+    if (clickCount === 12) {
+      setClickCount(0);
+    } else {
+      setClickCount(clickCount + 1);
+    }
   };
 
   const { days, hours, minutes, seconds } = intervalToDur;
@@ -52,6 +58,13 @@ export default function Home(): JSX.Element {
   const milliseconds = countDown
     .toString()
     .slice(countDown.toString().length - 3, countDown.toString().length);
+
+  let photoToShow = photo;
+  if (clickCount === 12) {
+    photoToShow = photo3;
+  } else if (clickCount === 11) {
+    photoToShow = photo2;
+  }
 
   return (
     <Flex
@@ -63,8 +76,8 @@ export default function Home(): JSX.Element {
       flex={1}
     >
       <Box width={{ base: 'full', md: '750px' }} textAlign={{ base: 'center' }}>
-        {clickCount < 10 ? (
-          <button onClick={onClick}>
+        <button onClick={onClick}>
+          {clickCount < 10 ? (
             <Heading
               color={colours[clickCount % colours.length]}
               fontSize={{ base: '2xl', md: '5xl', lg: '8xl', xl: '16xl' }}
@@ -73,10 +86,10 @@ export default function Home(): JSX.Element {
                 seconds
               )}:${milliseconds}`}
             </Heading>
-          </button>
-        ) : (
-          <Image src={photo} />
-        )}
+          ) : (
+            <Image src={photoToShow} />
+          )}
+        </button>
       </Box>
     </Flex>
   );
