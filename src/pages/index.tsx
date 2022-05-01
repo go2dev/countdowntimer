@@ -13,7 +13,7 @@ const getIntervalToDuration = () =>
     end: endDate,
   });
 
-const colours = ['red', 'blue', 'orange', 'green'];
+const colours = ['red', 'blue', 'orange', 'yellow'];
 
 export default function Home(): JSX.Element {
   const [intervalToDur, setIntervalToDur] = useState(getIntervalToDuration());
