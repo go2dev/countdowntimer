@@ -49,6 +49,10 @@ export default function Home(): JSX.Element {
 
   const { days, hours, minutes, seconds } = intervalToDur;
 
+  const milliseconds = countDown
+    .toString()
+    .slice(countDown.toString().length - 3, countDown.toString().length);
+
   return (
     <Flex
       w="full"
@@ -65,13 +69,9 @@ export default function Home(): JSX.Element {
               color={colours[clickCount % colours.length]}
               fontSize={{ base: '2xl', md: '5xl', lg: '8xl', xl: '16xl' }}
             >
-              {`${pad(days)}:${pad(hours)}:${pad(minutes)}:${pad(seconds)}:`}
-              {countDown
-                .toString()
-                .slice(
-                  countDown.toString().length - 3,
-                  countDown.toString().length
-                )}
+              {`${pad(days)}:${pad(hours)}:${pad(minutes)}:${pad(
+                seconds
+              )}:${milliseconds}`}
             </Heading>
           </button>
         ) : (
