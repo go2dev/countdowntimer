@@ -25,6 +25,8 @@ export default function Home(): JSX.Element {
   );
 
   useEffect(() => {
+    console.log('Soon.');
+
     const interval = setInterval(() => {
       setIntervalToDur(getIntervalToDuration());
 
