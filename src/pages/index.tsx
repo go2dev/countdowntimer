@@ -13,6 +13,12 @@ const getIntervalToDuration = () =>
     end: endDate,
   });
 
+const pad = (n: number | undefined): string => {
+  if (!n) return '';
+
+  return n < 10 ? `0${n}` : n.toString();
+};
+
 const colours = ['red', 'blue', 'orange', 'yellow'];
 
 export default function Home(): JSX.Element {
@@ -41,6 +47,8 @@ export default function Home(): JSX.Element {
     setClickCount(clickCount + 1);
   };
 
+  const { days, hours, minutes, seconds } = intervalToDur;
+
   return (
     <Flex
       w="full"
@@ -57,7 +65,7 @@ export default function Home(): JSX.Element {
               color={colours[clickCount % colours.length]}
               fontSize={{ base: '2xl', md: '5xl', lg: '8xl', xl: '16xl' }}
             >
-              {`${intervalToDur.days}:${intervalToDur.hours}:${intervalToDur.minutes}:${intervalToDur.seconds}:`}
+              {`${pad(days)}:${pad(hours)}:${pad(minutes)}:${pad(seconds)}:`}
               {countDown
                 .toString()
                 .slice(
